@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/quiz"; // Quiz API Endpoint
+const API_URL = "https://quizapp-api-xqkk.onrender.com/api/quiz"; // Quiz API Endpoint
 
 export const getQuizById = async (quizId) => {
   try {

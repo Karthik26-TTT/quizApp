@@ -3,7 +3,7 @@ import { useTheme } from "./ThemeContext"; // Import useTheme
 import Quiz from "./pages/Quiz";
 import Login from "./pages/Login";
 import Leaderboard from "./pages/Leaderboard";
-import QuizList from "./components/QuizList";
+import QuizList from "./components/Quizlist";
 
 function App() {
   const { darkMode } = useTheme(); // Ensure this is inside ThemeProvider

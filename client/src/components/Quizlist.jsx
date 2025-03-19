@@ -92,7 +92,7 @@ const QuizList = () => {
     // Fetch quizzes with loading state
     setLoading(true);
     axios
-      .get("http://localhost:5000/api/quiz")
+      .get("https://quizapp-api-xqkk.onrender.com/api/quiz")
       .then((response) => {
         setQuizzes(response.data);
         setLoading(false);

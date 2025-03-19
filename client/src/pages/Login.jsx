@@ -25,7 +25,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = isLogin ? "http://localhost:5000/api/auth/login" : "http://localhost:5000/api/auth/signup";
+      const url = isLogin ? "https://quizapp-api-xqkk.onrender.com/api/auth/login" : "https://quizapp-api-xqkk.onrender.com/api/auth/signup";
       const response = await axios.post(url, formData);
       
      
