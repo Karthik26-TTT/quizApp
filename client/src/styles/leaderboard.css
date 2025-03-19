@@ -1,0 +1,61 @@
+/* Leaderboard Container */
+.leaderboard-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .leaderboard-container h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  thead {
+    background: #2575fc;
+    color: white;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  
+  tbody tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  tbody tr:hover {
+    background: #f1f1f1;
+  }
+  
+  /* No Scores Message */
+  p {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .leaderboard-container {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    table {
+      font-size: 14px;
+    }
+  }
+  
