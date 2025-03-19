@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getQuizById } from "../api/quizapi";
-import "../styles/Quiz.css";
+import "../styles/quiz.css";
 
 function Quiz() {
   const { quizId } = useParams();
