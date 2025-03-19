@@ -262,6 +262,8 @@ body.dark {
   background-color: var(--card-background);
   color: var(--text-color);
   transition: all var(--transition-speed);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .search-input:focus {
@@ -272,6 +274,9 @@ body.dark {
 
 .category-filter {
   width: 200px;
+  margin-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .category-select {

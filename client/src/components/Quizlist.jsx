@@ -18,19 +18,18 @@ const QuizList = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const navigate = useNavigate();
 
-  // Quiz category images array
   const categoryImages = [];
 
-  // Default image for quizzes without a matching category
+ 
   const defaultImage = "/placeholder.svg?height=200&width=300";
 
-  // Toggle dark mode and save preference to localStorage
+ 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
     localStorage.setItem("darkMode", JSON.stringify(newMode));
 
-    // Apply dark mode class to body
+  
     if (newMode) {
       document.body.classList.add("dark");
     } else {
@@ -38,9 +37,9 @@ const QuizList = () => {
     }
   };
 
-  // Get quiz image based on category
+ 
   const getQuizImage = (quizTitle) => {
-    // Try to match quiz title with a category
+    
     const matchedCategory = categoryImages.find((item) =>
       quizTitle.toLowerCase().includes(item.category.toLowerCase())
     );
@@ -48,23 +47,23 @@ const QuizList = () => {
     return matchedCategory ? matchedCategory.image : defaultImage;
   };
 
-  // Get all available categories from quizzes
+ 
   const getCategories = () => {
     if (!quizzes.length) return ["All"];
 
     const categories = quizzes.map((quiz) => {
-      // Extract category from title or use default
+     
       const matchedCategory = categoryImages.find((item) =>
         quiz.title.toLowerCase().includes(item.category.toLowerCase())
       );
       return matchedCategory ? matchedCategory.category : "Other";
     });
 
-    // Add "All" and remove duplicates
+   
     return ["All", ...new Set(categories)];
   };
 
-  // Filter quizzes based on search term and category
+ 
   const filteredQuizzes = quizzes.filter((quiz) => {
     const matchesSearch =
       quiz.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -78,7 +77,7 @@ const QuizList = () => {
   });
 
   useEffect(() => {
-    // Check for dark mode preference in localStorage
+    
     const savedDarkMode = localStorage.getItem("darkMode");
     if (savedDarkMode) {
       const isDarkMode = JSON.parse(savedDarkMode);
@@ -89,7 +88,7 @@ const QuizList = () => {
       }
     }
 
-    // Fetch quizzes with loading state
+
     setLoading(true);
     axios
       .get("https://quizapp-api-xqkk.onrender.com/api/quiz")
@@ -144,7 +143,7 @@ const QuizList = () => {
           <h1 className="hero-title">Test Your Knowledge</h1>
           <p className="hero-subtitle">
             Challenge yourself with our collection of quizzes across various
-            topics
+            topics..
           </p>
         </div>
       </div>

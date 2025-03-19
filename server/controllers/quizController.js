@@ -18,7 +18,7 @@ exports.getLeaderboard = async (req, res) => {
   }
 };
 
-// Create a new quiz
+
 exports.createQuiz = async (req, res) => {
   try {
     const { title, questions } = req.body;
@@ -87,7 +87,7 @@ exports.deleteQuiz = async (req, res) => {
 exports.submitQuiz = async (req, res) => {
   try {
     const { quizId, answers } = req.body;
-    const userId = req.user.id; // Get user ID from token
+    const userId = req.user.id; 
 
     const quiz = await Quiz.findById(quizId);
     if (!quiz) return res.status(404).json({ message: "Quiz not found" });
@@ -95,11 +95,11 @@ exports.submitQuiz = async (req, res) => {
     let score = 0;
     quiz.questions.forEach((q, index) => {
       if (q.correctAnswer === answers[index]) {
-        score += 1; // Increase score for each correct answer
+        score += 1; 
       }
     });
 
-    // Save score in the database
+   
     const userScore = new UserScore({ user: userId, quiz: quizId, score });
     await userScore.save();
 
