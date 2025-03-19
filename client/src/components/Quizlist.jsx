@@ -8,7 +8,7 @@ import {
   LogOutIcon,
   BookOpenIcon,
 } from "lucide-react";
-import "../styles/quizlist.css";
+import "../styles/Quizlist.css";
 
 const QuizList = () => {
   const [quizzes, setQuizzes] = useState([]);
