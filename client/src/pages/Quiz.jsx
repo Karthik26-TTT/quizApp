@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getQuizById } from "../api/quizApi";
+import { getQuizById } from "../api/quizapi";
 import "../styles/Quiz.css";
 
 function Quiz() {
@@ -13,7 +13,7 @@ function Quiz() {
   const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
-    async function fetchQuiz() {   
+    async function fetchQuiz() {
       try {
         const data = await getQuizById(quizId);
         if (!data || !data.questions) throw new Error("Quiz data not found");
@@ -27,12 +27,12 @@ function Quiz() {
   }, [quizId]);
 
   if (!quiz) return <p>Loading quiz...</p>;
-  if (!quiz.questions.length) return <p>Error loading quiz. Please try again.</p>;
+  if (!quiz.questions.length)
+    return <p>Error loading quiz. Please try again.</p>;
 
   const questions = quiz.questions;
 
   if (quizCompleted) {
-  
     const username = localStorage.getItem("username") || "Guest";
     const existingScores = JSON.parse(localStorage.getItem("quizScores")) || [];
     existingScores.push({ username, score, total: questions.length });
@@ -42,8 +42,13 @@ function Quiz() {
     return (
       <div className="quiz-container">
         <h2>Quiz Completed!</h2>
-        <p>Your Score: {score} / {questions.length}</p>
-        <button onClick={() => window.location.reload()} className="restart-btn">
+        <p>
+          Your Score: {score} / {questions.length}
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="restart-btn"
+        >
           Restart Quiz
         </button>
       </div>
@@ -58,7 +63,9 @@ function Quiz() {
       setFeedback("✅ Correct!");
       setScore(score + 1);
     } else {
-      setFeedback(`❌ Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`);
+      setFeedback(
+        `❌ Incorrect! The correct answer is: ${currentQuestion.correctAnswer}`
+      );
     }
   };
 
@@ -75,7 +82,9 @@ function Quiz() {
   return (
     <div className="quiz-container">
       <h2>{quiz.title}</h2>
-      <p>Question {currentQuestionIndex + 1} of {questions.length}</p>
+      <p>
+        Question {currentQuestionIndex + 1} of {questions.length}
+      </p>
       <h3>{currentQuestion.questionText}</h3>
       <ul className="options-list">
         {currentQuestion.options.map((option, index) => (
@@ -92,8 +101,14 @@ function Quiz() {
 
       {feedback && <p className="feedback">{feedback}</p>}
 
-      <button onClick={handleNextQuestion} disabled={!selectedAnswer} className="next-btn">
-        {currentQuestionIndex === questions.length - 1 ? "Finish Quiz" : "Next Question"}
+      <button
+        onClick={handleNextQuestion}
+        disabled={!selectedAnswer}
+        className="next-btn"
+      >
+        {currentQuestionIndex === questions.length - 1
+          ? "Finish Quiz"
+          : "Next Question"}
       </button>
     </div>
   );
