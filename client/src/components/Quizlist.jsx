@@ -19,17 +19,13 @@ const QuizList = () => {
   const navigate = useNavigate();
 
   const categoryImages = [];
-
- 
   const defaultImage = "/placeholder.svg?height=200&width=300";
 
- 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
     localStorage.setItem("darkMode", JSON.stringify(newMode));
 
-  
     if (newMode) {
       document.body.classList.add("dark");
     } else {
@@ -37,37 +33,31 @@ const QuizList = () => {
     }
   };
 
- 
   const getQuizImage = (quizTitle) => {
-    
     const matchedCategory = categoryImages.find((item) =>
       quizTitle.toLowerCase().includes(item.category.toLowerCase())
     );
-
     return matchedCategory ? matchedCategory.image : defaultImage;
   };
 
- 
   const getCategories = () => {
     if (!quizzes.length) return ["All"];
 
     const categories = quizzes.map((quiz) => {
-     
       const matchedCategory = categoryImages.find((item) =>
         quiz.title.toLowerCase().includes(item.category.toLowerCase())
       );
       return matchedCategory ? matchedCategory.category : "Other";
     });
 
-   
     return ["All", ...new Set(categories)];
   };
 
- 
   const filteredQuizzes = quizzes.filter((quiz) => {
     const matchesSearch =
       quiz.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      quiz.description.toLowerCase().includes(searchTerm.toLowerCase());
+      (quiz.description &&
+        quiz.description.toLowerCase().includes(searchTerm.toLowerCase())); // Fix applied here
 
     const matchesCategory =
       selectedCategory === "All" ||
@@ -77,17 +67,14 @@ const QuizList = () => {
   });
 
   useEffect(() => {
-    
     const savedDarkMode = localStorage.getItem("darkMode");
     if (savedDarkMode) {
       const isDarkMode = JSON.parse(savedDarkMode);
       setDarkMode(isDarkMode);
-
       if (isDarkMode) {
         document.body.classList.add("dark");
       }
     }
-
 
     setLoading(true);
     axios
@@ -257,16 +244,12 @@ const QuizList = () => {
               <h3>Quick Links</h3>
               <ul>
                 <li onClick={() => navigate("/")}>Home</li>
-                <li onClick={() => navigate("/leaderboard")}>my Results</li>
+                <li onClick={() => navigate("/leaderboard")}>My Results</li>
                 <li onClick={() => navigate("/")}>Login</li>
               </ul>
             </div>
-
-            <div className="footer-column"></div>
           </div>
         </div>
-
-      
       </footer>
     </div>
   );

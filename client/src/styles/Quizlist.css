@@ -53,6 +53,7 @@ body.dark {
   flex-direction: column;
   background-color: var(--background-light);
   transition: background-color var(--transition-speed), color var(--transition-speed);
+  
 }
 
 /* Navbar */
