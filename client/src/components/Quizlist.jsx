@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {
-  MoonIcon,
-  SunIcon,
-  TrophyIcon,
-  LogOutIcon,
-  BookOpenIcon,
-} from "lucide-react";
+import { Moon, Sun, Trophy, LogOut, BookOpen } from "lucide-react";
 import "../styles/Quizlist.css";
 
 const QuizList = () => {
@@ -57,7 +51,7 @@ const QuizList = () => {
     const matchesSearch =
       quiz.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (quiz.description &&
-        quiz.description.toLowerCase().includes(searchTerm.toLowerCase())); // Fix applied here
+        quiz.description.toLowerCase().includes(searchTerm.toLowerCase()));
 
     const matchesCategory =
       selectedCategory === "All" ||
@@ -94,7 +88,7 @@ const QuizList = () => {
       {/* Navbar */}
       <nav className="navbar">
         <div className="nav-brand">
-          <BookOpenIcon className="brand-icon" />
+          <BookOpen className="brand-icon" />
           <h1 className="logo" onClick={() => navigate("/")}>
             QuizMaster
           </h1>
@@ -105,7 +99,7 @@ const QuizList = () => {
             className="nav-item results-link"
             onClick={() => navigate("/leaderboard")}
           >
-            <TrophyIcon size={18} />
+            <Trophy size={18} />
             <span>LeaderBoard</span>
           </div>
 
@@ -114,11 +108,11 @@ const QuizList = () => {
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
           >
-            {darkMode ? <SunIcon size={18} /> : <MoonIcon size={18} />}
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
           <button className="login-btn" onClick={() => navigate("/")}>
-            <LogOutIcon size={18} />
+            <LogOut size={18} />
             <span>Logout</span>
           </button>
         </div>
@@ -130,7 +124,7 @@ const QuizList = () => {
           <h1 className="hero-title">Test Your Knowledge</h1>
           <p className="hero-subtitle">
             Challenge yourself with our collection of quizzes across various
-            topics..
+            topics.
           </p>
         </div>
       </div>
@@ -246,6 +240,15 @@ const QuizList = () => {
                 <li onClick={() => navigate("/")}>Home</li>
                 <li onClick={() => navigate("/leaderboard")}>My Results</li>
                 <li onClick={() => navigate("/")}>Login</li>
+              </ul>
+            </div>
+
+            <div className="footer-column">
+              <h3>Resources</h3>
+              <ul>
+                <li>FAQ</li>
+                <li>Help Center</li>
+                <li>Contact Us</li>
               </ul>
             </div>
           </div>
